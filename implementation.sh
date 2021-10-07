@@ -2,18 +2,30 @@
 
 echo -e "\nFollowing set of commands enable UBUNTU Firewall and sets rules to allow only OpenSSH, HTTP & HTTPS traffic"
 sudo ufw status
+
+echo -e "\nFirst ensure default firewall to be open to not accidentally close the server without enabling atleast SSH connection"
+sudo ufw default allow 
+
 #enable ubuntu firewall
 sudo ufw enable
+
 #check the list of applications enabled via ubuntu firewall
 sudo ufw app list
+
 #enable OpenSSH on firewall
 sudo ufw allow "OpenSSH"
+
 #enable Apache Full on firewall, this could typically enable port 80 and 443 as well
 sudo ufw allow "Apache Full"
+
 #enable firewall to acceept http and https traffic from any IP using the following 3 commands
 sudo ufw allow http
 sudo ufw allow https
 sudo ufw allow proto tcp from any to any port 80,443
+
+#now disable default as deny to disable every other port
+sudo ufw default deny
+
 #Any policy to disable any subnet or specific IP can be entered here - Sample below
 
 #Following command blocks a subnet (Currently commented, to be used for a speicific situation)
