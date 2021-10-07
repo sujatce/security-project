@@ -7,7 +7,7 @@ echo -e "\nFirst ensure default firewall to be open to not accidentally close th
 sudo ufw default allow 
 
 #enable ubuntu firewall
-sudo ufw enable
+sudo ufw --force enable
 
 #check the list of applications enabled via ubuntu firewall
 sudo ufw app list
